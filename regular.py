@@ -3,69 +3,69 @@ import re
 
 
 def main():
-    # <editor-fold desc="匹配任意字符关键字">
+    # <editor-fold desc='匹配任意字符关键字'>
     pattern = re.compile(r'.a.\.xls')
-    result1 = pattern.findall("sales.xls"
-                              "sales1.xls"
-                              "orders3.xls"
-                              "sales2.xls"
-                              "sales3.xls"
-                              "apac1.xls"
-                              "europe2.xls"
-                              "na1.xls"
-                              "na2.xls"
-                              "sa2.xls"
-                              "ca1.xls")
+    result1 = pattern.findall('sales.xls'
+                              'sales1.xls'
+                              'orders3.xls'
+                              'sales2.xls'
+                              'sales3.xls'
+                              'apac1.xls'
+                              'europe2.xls'
+                              'na1.xls'
+                              'na2.xls'
+                              'sa2.xls'
+                              'ca1.xls')
 
     print(result1)  # ['na1.xls', 'na2.xls', 'sa2.xls', 'ca1.xls']
     # </editor-fold>
 
-    # <editor-fold desc="匹配一组字符关键字[]">
+    # <editor-fold desc='匹配一组字符关键字[]'>
     pattern = re.compile(r'[ns]a.\.xls')
-    result1 = pattern.findall("sales.xls"
-                              "sales1.xls"
-                              "orders3.xls"
-                              "sales2.xls"
-                              "sales3.xls"
-                              "apac1.xls"
-                              "europe2.xls"
-                              "na1.xls"
-                              "na2.xls"
-                              "sa2.xls"
-                              "ca1.xls")
+    result1 = pattern.findall('sales.xls'
+                              'sales1.xls'
+                              'orders3.xls'
+                              'sales2.xls'
+                              'sales3.xls'
+                              'apac1.xls'
+                              'europe2.xls'
+                              'na1.xls'
+                              'na2.xls'
+                              'sa2.xls'
+                              'ca1.xls')
 
     print(result1)  # ['na1.xls', 'na2.xls', 'sa2.xls']
     # </editor-fold>
 
-    # <editor-fold desc="大小写">
+    # <editor-fold desc='大小写'>
     pattern = re.compile(r'[Rr]eg[Ee]x')
 
-    result1 = pattern.findall("RegEx or regex or REGEX.")
+    result1 = pattern.findall('RegEx or regex or REGEX.')
 
     print(result1)  # ['RegEx', 'regex']
     # </editor-fold>
 
-    # <editor-fold desc="集合区间">
+    # <editor-fold desc='集合区间'>
     pattern = re.compile(r'[ns]a[0123456789]\.xls')
     pattern = re.compile(r'[ns]a[0-9]\.xls')
 
-    result1 = pattern.findall("sales.xls"
-                              "sales1.xls"
-                              "orders3.xls"
-                              "sales2.xls"
-                              "sales3.xls"
-                              "apac1.xls"
-                              "europe2.xls"
-                              "sam.xls"
-                              "na1.xls"
-                              "na2.xls"
-                              "sa1.xls"
-                              "ca1.xls")
+    result1 = pattern.findall('sales.xls'
+                              'sales1.xls'
+                              'orders3.xls'
+                              'sales2.xls'
+                              'sales3.xls'
+                              'apac1.xls'
+                              'europe2.xls'
+                              'sam.xls'
+                              'na1.xls'
+                              'na2.xls'
+                              'sa1.xls'
+                              'ca1.xls')
 
     print(result1)  # ['na1.xls', 'na2.xls', 'sa1.xls']
     # </editor-fold>
 
-    # <editor-fold desc="读取rgb值">
+    # <editor-fold desc='读取rgb值'>
     # [A-Z] 匹配A到Z所有大写字母
     # [a-z] 匹配a到z所有小写字母
     # [A-F] 匹配A到F所有大写字母
@@ -74,34 +74,34 @@ def main():
 
     pattern = re.compile(r'#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]')
 
-    result1 = pattern.findall("body { background-color: #fefdb8; }"
-                              "h1   { background-color: #0000ff; }"
-                              "div  { background-color: #d0f4e6; }"
-                              "span { background-color: #f08970; }")
+    result1 = pattern.findall('body { background-color: #fefdb8; }'
+                              'h1   { background-color: #0000ff; }'
+                              'div  { background-color: #d0f4e6; }'
+                              'span { background-color: #f08970; }')
 
     print(result1)  # ['#fefdb8', '#0000ff', '#d0f4e6', '#f08970']
     # </editor-fold>
 
-    # <editor-fold desc="排除关键字^">
+    # <editor-fold desc='排除关键字^'>
     pattern = re.compile(r'[ns]a[^0-9]\.xls')
 
-    result1 = pattern.findall("sales.xls"
-                              "sales1.xls"
-                              "orders3.xls"
-                              "sales2.xls"
-                              "sales3.xls"
-                              "apac1.xls"
-                              "europe2.xls"
-                              "sam.xls"
-                              "na1.xls"
-                              "na2.xls"
-                              "sa1.xls"
-                              "ca1.xls")
+    result1 = pattern.findall('sales.xls'
+                              'sales1.xls'
+                              'orders3.xls'
+                              'sales2.xls'
+                              'sales3.xls'
+                              'apac1.xls'
+                              'europe2.xls'
+                              'sam.xls'
+                              'na1.xls'
+                              'na2.xls'
+                              'sa1.xls'
+                              'ca1.xls')
 
     print(result1)  # ['sam.xls']
     # </editor-fold>
 
-    # <editor-fold desc="匹配空白字符">
+    # <editor-fold desc='匹配空白字符'>
     # 关键字
     # [\b] 回退(并删除)一个字符(Backspace)
     # \f 换页符
@@ -111,15 +111,15 @@ def main():
     # \v 垂直制表符
     pattern = re.compile(r'\r\n\r\n')
 
-    result1 = pattern.findall("101"
-                              "202"
+    result1 = pattern.findall('101'
+                              '202'
                               ""
-                              "303")
+                              '303')
 
     print(result1)  # 匹配空行
     # </editor-fold>
 
-    # <editor-fold desc="匹配特定字符串类型">
+    # <editor-fold desc='匹配特定字符串类型'>
     # 匹配数字,非数字
     # \d 任何一个数字字符 等价 [0-9]
     # \D 任何一个非数字字符 等价 [^0-9]
@@ -129,24 +129,24 @@ def main():
     # \W 任何一个非字母数字字符或非下划线字符(等价于[^a-zA-Z0-9_])
     pattern = re.compile(r'\w\d\w\d\w\d')
 
-    result1 = pattern.findall("11213\r\n"
-                              "A1C2E3\r\n"
-                              "48075\r\n"
-                              "48237\r\n"
-                              "M1B4F2\r\n"
-                              "90046\r\n"
-                              "H1H2H2\r\n")
+    result1 = pattern.findall('11213\r\n'
+                              'A1C2E3\r\n'
+                              '48075\r\n'
+                              '48237\r\n'
+                              'M1B4F2\r\n'
+                              '90046\r\n'
+                              'H1H2H2\r\n')
 
     print(result1)  # ['A1C2E3', 'M1B4F2', 'H1H2H2']
     # </editor-fold>
 
-    # <editor-fold desc="匹配空白字符,非空白字符">
+    # <editor-fold desc='匹配空白字符,非空白字符'>
     # \s 任何一个空白字符 等价 [\f\n\r\t\v]
     # \S 任何一个非空白字符 等价 [^\f\n\r\t\v]
 
     # </editor-fold>
 
-    # <editor-fold desc="匹配十六进制或八进制数值">
+    # <editor-fold desc='匹配十六进制或八进制数值'>
     # \x 十六进制
     # ex: \x0A 对应ASCII10 等价于 \n
 
@@ -155,7 +155,7 @@ def main():
 
     # </editor-fold>
 
-    # <editor-fold desc="POSIX, 不过py不支持">
+    # <editor-fold desc='POSIX, 不过py不支持'>
 
     # [:alnum:] 任何一个字母或数字(等价于[a-zA-Z0-9])
     # [:alpha:] 任何一个字母(等价于[a-zA-Z])
@@ -172,94 +172,94 @@ def main():
 
     # </editor-fold>
 
-    # <editor-fold desc="匹配一个或多个字符">
+    # <editor-fold desc='匹配一个或多个字符'>
     # +号匹配 1~N个字符
     # []内\.和.等价
     pattern = re.compile(r'[\w\.]+@[\w.]+\.\w+')
 
-    result1 = pattern.findall("ben@forta.com\n"
-                              "ben.forta@forta.com\n"
-                              "support@forta.com\n"
-                              "ben@urgent.forta.com\n"
-                              "spam@forta.com\n")
+    result1 = pattern.findall('ben@forta.com\n'
+                              'ben.forta@forta.com\n'
+                              'support@forta.com\n'
+                              'ben@urgent.forta.com\n'
+                              'spam@forta.com\n')
 
     # ['ben@forta.com', 'ben.forta@forta.com', 'support@forta.com', 'ben@urgent.forta.com', 'spam@forta.com']
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="匹配零个或多个字符">
+    # <editor-fold desc='匹配零个或多个字符'>
     # *号匹配 0~N个字符
     # []内\.和.等价
     pattern = re.compile(r'\w+[\w.]*@[\w.]+\.\w+')
 
-    result1 = pattern.findall(".ben@forta.com\n"
-                              ".ben.forta@forta.com\n")
+    result1 = pattern.findall('.ben@forta.com\n'
+                              '.ben.forta@forta.com\n')
 
     # ['ben@forta.com', 'ben.forta@forta.com']
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="匹配零个或一个字符">
+    # <editor-fold desc='匹配零个或一个字符'>
     # ?号匹配 0~1个字符(最多一次)
     pattern = re.compile(r'https?:\/\/[\w.\/]+')
 
-    result1 = pattern.findall("http://www.forta.com/ test https://www.forta.com/")
+    result1 = pattern.findall('http://www.forta.com/ test https://www.forta.com/')
 
     # ['http://www.forta.com/', 'https://www.forta.com/']
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="匹配重复次数">
+    # <editor-fold desc='匹配重复次数'>
     # {次数}
     pattern = re.compile(r'#[0-9A-Fa-f]{6}')
 
-    result1 = pattern.findall("body { background-color: #fefdb8; }"
-                              "h1   { background-color: #0000ff; }"
-                              "div  { background-color: #d0f4e6; }"
-                              "span { background-color: #f08970; }")
+    result1 = pattern.findall('body { background-color: #fefdb8; }'
+                              'h1   { background-color: #0000ff; }'
+                              'div  { background-color: #d0f4e6; }'
+                              'span { background-color: #f08970; }')
 
     print(result1)  # ['#fefdb8', '#0000ff', '#d0f4e6', '#f08970']
 
     # </editor-fold>
 
-    # <editor-fold desc="区间范围">
+    # <editor-fold desc='区间范围'>
     # {最小, 最大} ex:{2, 4} 最少重复2次, 最多重复4次
     # {0,1} 等价于 ?
     pattern = re.compile(r'\d{1,2}[-\/]\d{1,2}[-\/]\d{2,4}')
 
-    result1 = pattern.findall("4/8/17\n"
-                              "10-6-2018\n"
-                              "2/2/2\n"
-                              "01-01-01\n")
+    result1 = pattern.findall('4/8/17\n'
+                              '10-6-2018\n'
+                              '2/2/2\n'
+                              '01-01-01\n')
 
     # ['4/8/17', '10-6-2018', '01-01-01']
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="至少重复多少次">
+    # <editor-fold desc='至少重复多少次'>
     # {至少次数,} 重复 至少次数 或更多
     # {1,} 等价于 +
     # 找出金额大于100的
     pattern = re.compile(r'\d+: \$\d{3,}\.\d{2}')
 
-    result1 = pattern.findall("1001: $496.80\n"
-                              "1002: $1290.69\n"
-                              "1003: $26.43\n"
-                              "1004: $613.42\n"
-                              "1005: $7.61\n"
-                              "1006: $414.90\n"
-                              "1007: $25.00\n")
+    result1 = pattern.findall('1001: $496.80\n'
+                              '1002: $1290.69\n'
+                              '1003: $26.43\n'
+                              '1004: $613.42\n'
+                              '1005: $7.61\n'
+                              '1006: $414.90\n'
+                              '1007: $25.00\n')
 
     # ['1001: $496.80', '1002: $1290.69', '1004: $613.42', '1006: $414.90']
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="防止过度匹配">
+    # <editor-fold desc='防止过度匹配'>
     # * + {} 都是greedy型
     # 后面添加?就是 懒惰版本
 
@@ -268,84 +268,84 @@ def main():
     # ['<b>AK</b>', '<b>HI</b>']
     pattern = re.compile(r'<[Bb]>.*?<\/[Bb]>')
 
-    result1 = pattern.findall("This offer is not available to customer living in <b>AK</b> and <b>HI</b>")
+    result1 = pattern.findall('This offer is not available to customer living in <b>AK</b> and <b>HI</b>')
 
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="单词边界">
+    # <editor-fold desc='单词边界'>
     # \b 匹配单词边界
 
     pattern = re.compile(r'\bcat\b')
 
-    result1 = pattern.findall("The cat scattered his food all over the room.")
+    result1 = pattern.findall('The cat scattered his food all over the room.')
 
     # ['cat']
     print(result1)
 
     pattern = re.compile(r'\bcap')
 
-    result1 = pattern.findall("captain cap cape recap")
+    result1 = pattern.findall('captain cap cape recap')
 
     # ['cap', 'cap', 'cap']
     print(result1)
 
     pattern = re.compile(r'cap\b')
 
-    result1 = pattern.findall("captain cap cape recap")
+    result1 = pattern.findall('captain cap cape recap')
 
     # ['cap', 'cap']
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="非单词边界">
+    # <editor-fold desc='非单词边界'>
     # \B 匹配非单词边界
 
     pattern = re.compile(r'\B-\B')
 
-    result1 = pattern.findall("color - coded nine-digit")
+    result1 = pattern.findall('color - coded nine-digit')
 
     # ['-']
     print(result1)
     # </editor-fold>
 
-    # <editor-fold desc="字符串边界">
+    # <editor-fold desc='字符串边界'>
     # ^ 字符串开头 ([]内^才是取反)
     # $ 字符串结尾
 
     # 如果xml之前有其他字符或者其他行, 就会匹配失败
-    # ['<?xml version="1.0" encoding="utf-8"?>']
+    # ['<?xml version='1.0' encoding='utf-8'?>']
     pattern = re.compile(r'^\s*<\?xml.*\?>')
     # 匹配尾巴的
     # ['<manifest>']
     pattern = re.compile(r'<manifest>$')
 
-    result1 = pattern.findall("<?xml version=\"1.0\" encoding=\"utf-8\"?><manifest><manifest>")
+    result1 = pattern.findall('<?xml version=\'1.0\' encoding=\'utf-8\'?><manifest><manifest>')
 
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="多行模式">
+    # <editor-fold desc='多行模式'>
     # (?m) 打开多行模式, 打开后会把换行符视为字符串分隔符
     # 这样就可以用^$匹配字符串换行后的起始和结束位置
 
     pattern = re.compile(r'(?m)^\s*\/\/.*$')
 
-    result1 = pattern.findall("// 注释1 \n"
-                              "code123\n"
-                              "// 注释2\n"
-                              "code123 \n"
-                              "//注释123 注释456")
+    result1 = pattern.findall('// 注释1 \n'
+                              'code123\n'
+                              '// 注释2\n'
+                              'code123 \n'
+                              '//注释123 注释456')
 
     # ['// 注释1 ', '// 注释2', '//注释123 注释456']
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="子表达式">
+    # <editor-fold desc='子表达式'>
     # () 关键字
 
     # 无法正确匹配, 只能匹配 &nbsp;;;
@@ -353,7 +353,7 @@ def main():
 
     pattern = re.compile(r'(&nbsp;){2,}')
 
-    result1 = pattern.findall("Test&nbsp;&nbsp;&nbsp;&nbsp;Test")
+    result1 = pattern.findall('Test&nbsp;&nbsp;&nbsp;&nbsp;Test')
 
     # ['// 注释1 ', '// 注释2', '//注释123 注释456']
     print(result1)
@@ -370,7 +370,7 @@ def main():
     # ['12.123.14.200']
     pattern = re.compile(r'(?:\d{1,3}\.){3}\d{1,3}')
 
-    result1 = pattern.findall("[12.123.14.200]")
+    result1 = pattern.findall('[12.123.14.200]')
 
     print(result1)
 
@@ -380,15 +380,15 @@ def main():
     # [('1967', '19')]
     pattern = re.compile(r'((19|20)\d{2})')
 
-    result1 = pattern.findall("1967-08-17")
+    result1 = pattern.findall('1967-08-17')
 
     print(result1)
 
     # </editor-fold>
 
-    # <editor-fold desc="补充上面子表达式中的()和findall在py下的注意">
+    # <editor-fold desc='补充上面子表达式中的()和findall在py下的注意'>
 
-    s = "adfad asdfasdf asdfas asdfawef asd adsfas "
+    s = 'adfad asdfasdf asdfas asdfawef asd adsfas '
 
     reObj1 = re.compile(r'((\w+)\s+\w+)')
 
@@ -408,7 +408,7 @@ def main():
     # 按以上代码例子讲解:
     #
     # findall函数返回的总是正则表达式在字符串中所有匹配结果的列表
-    # 此处主要讨论列表中"结果"的展现方式
+    # 此处主要讨论列表中'结果'的展现方式
     # 即findall中返回列表中每个元素包含的信息
     # 1.当给出的正则表达式中带有多个括号时
     #   列表的元素为多个字符串组成的tuple
@@ -426,12 +426,12 @@ def main():
     #
     # </editor-fold>
 
-    # <editor-fold desc="匹配有效ip">
+    # <editor-fold desc='匹配有效ip'>
     # 注意顺序
     pattern = re.compile(
         r'((((25[0-5])|(2[0-4]\d)|(1[0-9]\d)|(\d{1,2}))\.){3}((25[0-5])|(2[0-4]\d)|(1[0-9]\d)|(\d{1,2})))')
 
-    result1 = pattern.findall("[12.159.46.200]")
+    result1 = pattern.findall('[12.159.46.200]')
 
     # [('12.159.46.200', '46.', '46', '', '', '159', '46', '200', '', '200', '', '')]
     print(result1)
@@ -441,14 +441,35 @@ def main():
     pattern = re.compile(
         r'((((\d{1,2})|(1[0-9]\d)|(2[0-4]\d)|(25[0-5])|)\.){3}((\d{1,2})|(1[0-9]\d)|(2[0-4]\d)|(25[0-5])|))')
 
-    result1 = pattern.findall("[12.159.46.200]")
+    result1 = pattern.findall('[12.159.46.200]')
 
     # [('12.159.46.20', '46.', '46', '46', '159', '', '', '20', '20', '', '', '')]
     print(result1)
 
     # </editor-fold>
 
+    # <editor-fold desc='反向引用或回溯引用(backreference)'>
+    # ()代表一个子表达式
+    # 之后使用\n(1开始)代表引用先前的第n个表达式
+    # 部分正则实现中\0可以代表整个表达式
+    # 注意多个()的情况
 
-if __name__ == "__main__":
+    # ['of', 'and', 'are']
+    pattern = re.compile(r'[ ](\w+)[ ]\1')
+
+    # [(' of ', 'of'), (' and ', 'and'), (' are ', 'are')]
+    pattern = re.compile(r'([ ](\w+)[ ])\2')
+
+    # [(' of of', 'of'), (' and and', 'and'), (' are are', 'are')]
+    pattern = re.compile(r'([ ](\w+)[ ]\2)')
+
+    result1 = pattern.findall('xx of of xxx and and xxx are are.')
+
+    print(result1)
+
+    # </editor-fold>
+
+
+if __name__ == '__main__':
     main()
     pass
