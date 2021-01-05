@@ -467,6 +467,166 @@ def main():
 
     print(result1)
 
+    pattern = re.compile(r'(<[hH]([1-6])>.*?<\/[hH]\2>)')
+
+    result1 = pattern.findall('<body>\n'
+                              '<h1>Test1</h1>\n'
+                              'Test2\n'
+                              '<h2>Test3</h2>\n'
+                              'Test4\n'
+                              '<h3>Test5</h3>\n'
+                              'Test6<br/>\n'
+                              '</body>\n')
+
+    # [('<h1>Test1</h1>', '1'), ('<h2>Test3</h2>', '2'), ('<h3>Test5</h3>', '3')]
+    print(result1)
+
+    # </editor-fold>
+
+    # <editor-fold desc='替换操作'>
+    # 替换的串中和backreference一样使用\n替换子表达式
+
+    pattern = re.compile(r'([\w\.]+@[\w.]+\.\w+)')
+
+    s = 'ben@forta.com\n' + \
+        'abcdefg\n' + \
+        'ben.forta@forta.com\n' + \
+        'abcdefg'
+
+    result1 = pattern.findall(s)
+    replstr = r'<a href="mailto:\1">\1</a>'
+
+    # ['ben@forta.com', 'ben.forta@forta.com']
+    print(result1)
+
+    print('---------------')
+    print(s)
+    print('----↓↓↓↓↓↓↓----')
+    print(pattern.sub(replstr, s))
+    print('---------------')
+
+    pattern = re.compile(r'(\d{3})(-)(\d{3})(-)(\d{4})')
+
+    s = '333-157-1507\n' + \
+        '123-403-1570\n' + \
+        '111-578-8456\n' + \
+        '234-237-4856'
+
+    result1 = pattern.findall(s)
+    replstr = r'(\1) \3-\5'
+
+    # [('333', '-', '157', '-', '1507'),
+    # ('123', '-', '403', '-', '1570'),
+    # ('111', '-', '578', '-', '8456'),
+    # ('234', '-', '237', '-', '4856')]
+    print(result1)
+
+    print('---------------')
+    print(s)
+    print('----↓↓↓↓↓↓↓----')
+    print(pattern.sub(replstr, s))
+    print('---------------')
+
+    # </editor-fold>
+
+    # <editor-fold desc='大小写转换'>
+    # 正则配合backreference
+    # \E \L,\U的结束符
+    # \l 将下一个字符转换成小写
+    # \L 将\L至\E之间的字符都转换成小写
+    # \u 将下一个字符转换成大写
+    # \U 将\U至\E之间的字符都转换成小写
+    # py的话需要像下面这样处理
+    # 以上关键字会报错
+
+    pattern = re.compile(r'([\w\.]+@[\w.]+\.\w+)')
+
+    s = 'ben@forta.com\n' + \
+        'abcdefg\n' + \
+        'ben.forta@forta.com\n' + \
+        'abcdefg'
+
+    result1 = pattern.findall(s)
+
+    # 'Test[{\U\1\E}]
+    def callback(word): return 'Test[{}]'.format(word.group(1).upper())
+
+    # ['ben@forta.com', 'ben.forta@forta.com']
+    print(result1)
+
+    print('---------------')
+    print(s)
+    print('----↓↓↓↓↓↓↓----')
+    print(pattern.sub(callback, s))
+    print('---------------')
+
+    # </editor-fold>
+
+    # <editor-fold desc='向前查找'>
+    # 查看已匹配文本之后的内容
+    # (?=)
+
+    # ['https:', 'https:']
+    pattern = re.compile(r'.+:')
+
+    # ['https', 'https']
+    pattern = re.compile(r'.+(?=:)')
+
+    result1 = pattern.findall('https://www.bilibili.com/\n'
+                              'https://www.baidu.com/\n')
+
+    print(result1)
+
+    # </editor-fold>
+
+    # <editor-fold desc='向后查找'>
+    # (?<=)
+
+    pattern = re.compile(r'(?<=\$)[\d.]+')
+
+    result1 = pattern.findall('1.24\n'
+                              '4685.6845\n'
+                              '$ 4685.6845\n'
+                              '$15978685.45\n'
+                              '$12346785852.54$\n'
+                              '4568.96 $64987.69\n')
+
+    # ['15978685.45', '12346785852.54', '64987.69']
+    print(result1)
+
+    # </editor-fold>
+
+    # <editor-fold desc='结合向前向后'>
+
+    pattern = re.compile(r'(?<=\<[tT][iI][tT][lL][eE]\>).*(?=\<\/[tT][iI][tT][lL][eE]\>)')
+
+    result1 = pattern.findall('<head>\n'
+                              '<title>Test 123 learning regex.</title>\n'
+                              '</head>')
+
+    # ['Test 123 learning regex.']
+    print(result1)
+
+    # </editor-fold>
+
+    # <editor-fold desc='否定式环视'>
+    # = 替换为 !
+    # ?=  --> ?!
+    # ?<= --> ?<!
+
+    pattern = re.compile(r'\b(?<!\$)\d+\b')
+
+    result1 = pattern.findall('1 24\n'
+                              '$30\n'
+                              '200\n'
+                              '$ 300123\n'
+                              '$15945\n'
+                              '$123454$\n'
+                              '456896 $6498769\n')
+
+    # ['1', '24', '466845', '4686845', '456896']
+    print(result1)
+
     # </editor-fold>
 
 
